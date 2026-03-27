@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Radar de Investimentos</title>
+    
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#131722">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <link rel="apple-touch-icon" href="https://cdn-icons-png.flaticon.com/512/2422/2422796.png">
+
+    <style>
+        body {
+            background-color: #131722;
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 15px;
+        }
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        @media (max-width: 768px) {
+            .grid-layout { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="grid-layout">
+    <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+        {
+          "colorTheme": "dark",
+          "dateRange": "12M",
+          "showChart": true,
+          "locale": "br",
+          "width": "100%",
+          "height": 660,
+          "largeChartHeight": 320,
+          "isTransparent": false,
+          "showSymbolLogo": true,
+          "tabs": [
+            {
+              "title": "Ações B3",
+              "symbols": [
+                { "s": "BMFBOVESPA:ITSA4" }, { "s": "BMFBOVESPA:CMIG4" },
+                { "s": "BMFBOVESPA:KLBN11" }, { "s": "BMFBOVESPA:VIVT3" },
+                { "s": "BMFBOVESPA:CXSE3" }, { "s": "BMFBOVESPA:ABEV3" },
+                { "s": "BMFBOVESPA:BBAS3" }, { "s": "BMFBOVESPA:SANB11" }, 
+                { "s": "BMFBOVESPA:EGIE3" }
+              ]
+            }
+          ]
+        }
+        </script>
+    </div>
+
+    <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
+        <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-market-overview.js" async>
+        {
+          "colorTheme": "dark",
+          "dateRange": "12M",
+          "showChart": true,
+          "locale": "br",
+          "width": "100%",
+          "height": 660,
+          "largeChartHeight": 320,
+          "isTransparent": false,
+          "showSymbolLogo": true,
+          "tabs": [
+            {
+              "title": "Fundos Imobiliários",
+              "symbols": [
+                { "s": "BMFBOVESPA:BTLG11" }, { "s": "BMFBOVESPA:GARE11" },
+                { "s": "BMFBOVESPA:XPLG11" }, { "s": "BMFBOVESPA:MXRF11" },
+                { "s": "BMFBOVESPA:RZAG11" }, { "s": "BMFBOVESPA:HSML11" },
+                { "s": "BMFBOVESPA:KNCR11" }, { "s": "BMFBOVESPA:XPML11" },
+                { "s": "BMFBOVESPA:HGBS11" }
+              ]
+            }
+          ]
+        }
+        </script>
+    </div>
+</div>
+
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+            .then(reg => console.log('PWA Pronto!'))
+            .catch(err => console.log('Erro no SW:', err));
+        });
+    }
+</script>
+
+</body>
+</html>
